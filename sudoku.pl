@@ -36,10 +36,10 @@ reduceDomain([H|T],Domain,Out) :-
 %
 %   Given a probability threshold, this predicate recursively replaces random items in the list with free variables.
 %
-obfuscateLine(_, [], []).
+obfuscateLine(_, [], []) :- !.
 
 obfuscateLine(Diff, [H|T], [H|ObfuscatedRest]) :-
-    random(X), X > Diff, obfuscateLine(Diff,T,ObfuscatedRest).
+    random(X), X > Diff, !, obfuscateLine(Diff,T,ObfuscatedRest).
 
 obfuscateLine(Diff, [_|T], [_|ObfuscatedRest]) :-
     obfuscateLine(Diff,T,ObfuscatedRest).
@@ -67,7 +67,7 @@ peelLeft([[H|R]|T], [H|RestOfColumn], [R|RestOfRests]) :- peelLeft(T,RestOfColum
 %
 % Transposes the input matrix represented as a list of rows. Predicate is not symmetrical!
 %
-transpose([[]|_],[]).
+transpose([[]|_],[]) :- !.
 transpose(Matrix, [H|T]) :- peelLeft(Matrix,H,RestOfMatrix), transpose(RestOfMatrix,T).
 
 % getBoxStack/6 (+Sudoku, +BoxWidth, +BoxHeight, +Buffer, -BoxStack, -RestOfSudoku)
@@ -78,7 +78,7 @@ transpose(Matrix, [H|T]) :- peelLeft(Matrix,H,RestOfMatrix), transpose(RestOfMat
 %   Predicate recursively peels the leftmost parts of rows (of length BoxWidth) and stores them into Buffer.
 %   When the desired number of rows (BoxHeight) has been processed, buffer is cleared and stored into the Out list.
 %
-getBoxStack([],_,_,Buffer,[Buffer],[]).
+getBoxStack([],_,_,Buffer,[Buffer],[]) :- !.
 
 getBoxStack(Sudoku,Width,Height,Buffer,[Buffer|RestOfBoxes],RemainingRows):-
     SizeOfBox is Width * Height,    % When Buffer is filled, it gets appended to the Out list and the Buffer is cleared for next step.
@@ -95,8 +95,8 @@ getBoxStack([CurrentRow|Frontier],Width,Height,OldBuffer,Boxes,[RestOfCurrentRow
 %
 %   Recursively peels the left side stack of boxes from the +Sudoku board until none are left.
 %
-getBoxes_([],_,_,[]).
-getBoxes_([[]|_],_,_,[]).
+getBoxes_([],_,_,[]) :- !.
+getBoxes_([[]|_],_,_,[]) :- !.
 
 getBoxes_(Sudoku, Width, Height, Out) :-
     getBoxStack(Sudoku,Width,Height,[],Stack,Rest),
