@@ -1,6 +1,6 @@
 # Test Data for Prolog Sudoku
 The testing Sudokus must be fairly simple, as more complex puzzles (with fewer clues) lead to more possible solutions. \
-The solutions are enumerated in nondeterministic way (because of `random_permutation/2` on line 256), there must be only one correct solution to simplify the testing.\
+The solutions are enumerated in nondeterministic way (because of `random_permutation/2` on [line 256](https://github.com/barjin/Prolog-Sudoku/blob/151b942bc220ba6d3ff7a831f7faddff96d9922f/sudoku.pl#L256)), so it is better to have only one solution to avoid excessive backtracking during the testing.\
 \
 *Tip: While testing, feel free to use the "Copy" button in upper right corner of the code blocks!*
 
