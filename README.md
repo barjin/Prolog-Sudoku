@@ -59,3 +59,9 @@ Sudoku:
 | 2 1 | _ 6 | 4 _ |
 true.
 ```
+
+## Test Data
+- Test data can be found in [test_data.md](https://github.com/barjin/Prolog-Sudoku/blob/main/test_data.md).
+
+## Legal
+Made by Jindřich Bär as a semestral work for [NPRG005](https://is.cuni.cz/studium/predmety/index.php?tid=&do=predmet&kod=NPRG005&skr=2020&fak=11320) at [MFF UK](https://www.mff.cuni.cz/), Prague, 2021.
