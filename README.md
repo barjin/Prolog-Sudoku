@@ -59,6 +59,8 @@ Sudoku:
 | 2 1 | _ 6 | 4 _ |
 true.
 ```
+## How does it work?
+- Check out [predicates.md](https://github.com/barjin/Prolog-Sudoku/blob/main/predicates.md), where all the used predicates are described, including example usage.
 
 ## Test Data
 - Test data can be found in [test_data.md](https://github.com/barjin/Prolog-Sudoku/blob/main/test_data.md).
